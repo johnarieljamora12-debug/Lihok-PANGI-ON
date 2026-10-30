@@ -1,2 +1,2 @@
-# Lihok-PANGI-ON
+Lihok PANGIÑON
 SK Transparency Website
