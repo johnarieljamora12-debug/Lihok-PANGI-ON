@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Lihok PANGIÑON - Sangguniang Kabataan of Barangay Pangi, Bontoc, Southern Leyte. Access public budgets, projects, documents, and official information.">
+
+    <title>Lihok PANGIÑON</title>
+
+    <style>
+        :root {
+            --deep-green: #02291f;
+            --dark-green: #064735;
+            --green: #16845b;
+            --light-green: #bbf7d0;
+            --pale-green: #eaf5ec;
+            --gold: #facc15;
+            --dark-gold: #d9a900;
+            --white: #ffffff;
+            --background: #f5f9f4;
+            --text: #26382e;
+            --muted: #63766a;
+            --border: #dce9dd;
+            --shadow: 0 10px 30px rgba(2, 41, 31, 0.09);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 20px;
+        }
+
+        body {
+            font-family: "Segoe UI", Roboto, Arial, sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--background);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        button,
+        a {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: linear-gradient(
+                110deg,
+                var(--dark-green),
+                var(--deep-green)
+            );
+            color: var(--white);
+            border-bottom: 3px solid var(--green);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: auto;
+            padding: 12px 4%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            flex-shrink: 0;
+        }
+
+        .sk-logo {
+            width: 65px;
+            height: 65px;
+            object-fit: contain;
+            border-radius: 50%;
+            background: var(--white);
+            border: 3px solid var(--gold);
+            padding: 3px;
+        }
+
+        .logo-text h1 {
+            color: var(--white);
+            font-size: 19px;
+            line-height: 1.4;
+            letter-spacing: 0.6px;
+            font-weight: 800;
+        }
+
+        .tagline {
+            color: #d4e9dc;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            display: inline-block;
+            color: var(--white);
+            font-size: 13px;
+            font-weight: 700;
+            padding: 9px 0;
+            border-bottom: 3px solid transparent;
+            transition: color 0.25s ease,
+                        border-color 0.25s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--gold);
+            border-bottom-color: var(--gold);
+        }
+
+        /* =========================
+           HERO SECTION
+        ========================= */
+
+        .hero {
+            position: relative;
+            min-height: 540px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            padding: 90px 6%;
+            text-align: center;
+            color: var(--white);
+
+            background:
+                linear-gradient(
+                    120deg,
+                    rgba(2, 41, 31, 0.94),
+                    rgba(6, 71, 53, 0.78),
+                    rgba(2, 41, 31, 0.88)
+                ),
+                url("skofficials.png");
+
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 330px;
+            height: 330px;
+            border: 1px solid rgba(250, 204, 21, 0.25);
+            border-radius: 50%;
+            top: -150px;
+            right: -70px;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            width: 240px;
+            height: 240px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 50%;
+            bottom: -130px;
+            left: -60px;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: auto;
+            animation: fadeUp 0.9s ease;
+        }
+
+        .hero-label {
+            display: inline-block;
+            color: var(--gold);
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+            padding: 8px 18px;
+            border: 1px solid rgba(250, 204, 21, 0.6);
+            border-radius: 30px;
+            background: rgba(2, 41, 31, 0.35);
+        }
+
+        .hero h2 {
+            font-size: clamp(2rem, 5vw, 3.8rem);
+            line-height: 1.2;
+            font-weight: 900;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .hero h2 span {
+            color: var(--gold);
+        }
+
+        .hero-description {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: #e2f5e9;
+            font-size: 17px;
+            line-height: 1.9;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            padding: 13px 25px;
+            border-radius: 7px;
+            font-size: 14px;
+            font-weight: 800;
+            transition: all 0.25s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+        }
+
+        .btn.primary {
+            background: var(--gold);
+            color: var(--deep-green);
+            border: 2px solid var(--gold);
+            box-shadow: 0 6px 20px rgba(250, 204, 21, 0.2);
+        }
+
+        .btn.primary:hover {
+            background: #ffe45c;
+            border-color: #ffe45c;
+            box-shadow: 0 9px 25px rgba(250, 204, 21, 0.3);
+        }
+
+        .btn.secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid rgba(255, 255, 255, 0.8);
+        }
+
+        .btn.secondary:hover {
+            background: var(--white);
+            color: var(--dark-green);
+        }
+
+        /* =========================
+           TRANSPARENCY INTRODUCTION
+        ========================= */
+
+        .intro-section {
+            max-width: 1150px;
+            margin: -35px auto 0;
+            padding: 0 25px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .intro-box {
+            background: var(--white);
+            padding: 30px 35px;
+            border-radius: 14px;
+            border: 1px solid var(--border);
+            border-left: 6px solid var(--gold);
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .intro-icon {
+            width: 65px;
+            height: 65px;
+            min-width: 65px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--pale-green);
+            border-radius: 14px;
+            font-size: 30px;
+        }
+
+        .intro-text h3 {
+            color: var(--dark-green);
+            font-size: 21px;
+            margin-bottom: 5px;
+        }
+
+        .intro-text p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        /* =========================
+           GENERAL SECTION STYLES
+        ========================= */
+
+        .section {
+            max-width: 1250px;
+            margin: auto;
+            padding: 75px 30px;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 42px;
+        }
+
+        .section-label {
+            display: inline-block;
+            color: var(--green);
+            font-size: 12px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .section-heading h2 {
+            color: var(--deep-green);
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            line-height: 1.3;
+            margin-bottom: 12px;
+        }
+
+        .section-heading p {
+            max-width: 650px;
+            margin: auto;
+            color: var(--muted);
+            font-size: 15px;
+        }
+
+        /* =========================
+           PORTAL CARDS
+        ========================= */
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 22px;
+        }
+
+        .card {
+            position: relative;
+            overflow: hidden;
+            background: var(--white);
+            padding: 28px 23px;
+            border: 1px solid var(--border);
+            border-top: 4px solid var(--green);
+            border-radius: 12px;
+            box-shadow: 0 5px 18px rgba(2, 41, 31, 0.05);
+            transition: transform 0.3s ease,
+                        box-shadow 0.3s ease,
+                        border-color 0.3s ease;
+        }
+
+        .card::after {
+            content: "";
+            position: absolute;
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: var(--pale-green);
+            right: -38px;
+            top: -40px;
+            opacity: 0.65;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 15px 35px rgba(2, 41, 31, 0.12);
+            border-top-color: var(--gold);
+        }
+
+        .card:hover::after {
+            transform: scale(1.4);
+        }
+
+        .card-icon {
+            position: relative;
+            z-index: 1;
+            width: 58px;
+            height: 58px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            background: var(--pale-green);
+            margin-bottom: 21px;
+            font-size: 28px;
+        }
+
+        .card h3 {
+            color: var(--dark-green);
+            font-size: 17px;
+            margin-bottom: 11px;
+            line-height: 1.4;
+        }
+
+        .card p {
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.9;
+            min-height: 75px;
+        }
+
+        .card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 19px;
+            color: var(--green);
+            font-size: 13px;
+            font-weight: 800;
+            transition: gap 0.25s ease,
+                        color 0.25s ease;
+        }
+
+        .card-link:hover {
+            gap: 13px;
+            color: var(--deep-green);
+        }
+
+        /* =========================
+           TRANSPARENCY VALUES
+        ========================= */
+
+        .values-section {
+            background: linear-gradient(
+                135deg,
+                var(--deep-green),
+                var(--dark-green)
+            );
+            color: var(--white);
+            padding: 65px 5%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .values-container {
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .values-heading {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .values-heading span {
+            color: var(--gold);
+            font-size: 12px;
+            letter-spacing: 2px;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .values-heading h2 {
+            margin-top: 8px;
+            font-size: clamp(1.7rem, 4vw, 2.4rem);
+        }
+
+        .values-heading p {
+            color: #d4e9dc;
+            max-width: 650px;
+            margin: 10px auto 0;
+            font-size: 14px;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 22px;
+        }
+
+        .value-item {
+            text-align: center;
+            padding: 25px 20px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            transition: background 0.25s ease,
+                        transform 0.25s ease;
+        }
+
+        .value-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .value-icon {
+            font-size: 31px;
+            margin-bottom: 12px;
+        }
+
+        .value-item h3 {
+            color: var(--gold);
+            font-size: 17px;
+            margin-bottom: 8px;
+        }
+
+        .value-item p {
+            color: #d4e9dc;
+            font-size: 13px;
+        }
+
+        /* =========================
+           QUICK ACCESS
+        ========================= */
+
+        .quick-access {
+            max-width: 1050px;
+            margin: auto;
+            padding: 70px 25px;
+            text-align: center;
+        }
+
+        .quick-access h2 {
+            color: var(--deep-green);
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .quick-access > p {
+            color: var(--muted);
+            font-size: 14px;
+            margin-bottom: 27px;
+        }
+
+        .quick-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .quick-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 11px 19px;
+            border: 1px solid #cbded0;
+            border-radius: 7px;
+            background: var(--white);
+            color: var(--dark-green);
+            font-size: 13px;
+            font-weight: 800;
+            transition: all 0.25s ease;
+        }
+
+        .quick-btn:hover {
+            background: var(--dark-green);
+            border-color: var(--dark-green);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: linear-gradient(
+                135deg,
+                var(--deep-green),
+                var(--dark-green)
+            );
+            color: #d4e9dc;
+            padding: 50px 5% 20px;
+            border-top: 4px solid var(--green);
+        }
+
+        .footer-container {
+            max-width: 1250px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 40px;
+            padding-bottom: 30px;
+        }
+
+        .footer-brand h2 {
+            color: var(--white);
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .footer-brand p {
+            font-size: 13px;
+            line-height: 1.9;
+            max-width: 380px;
+        }
+
+        .footer-column h3 {
+            color: var(--gold);
+            font-size: 15px;
+            margin-bottom: 14px;
+        }
+
+        .footer-column ul {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .footer-column a {
+            color: #d4e9dc;
+            font-size: 13px;
+            transition: color 0.2s ease;
+        }
+
+        .footer-column a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            max-width: 1250px;
+            margin: auto;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .footer-bottom p {
+            font-size: 12px;
+        }
+
+        .footer-bottom a {
+            color: var(--gold);
+            font-weight: 700;
+        }
+
+        /* =========================
+           BACK TO TOP
+        ========================= */
+
+        .back-to-top {
+            position: fixed;
+            right: 22px;
+            bottom: 22px;
+            z-index: 900;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gold);
+            color: var(--deep-green);
+            border-radius: 50%;
+            font-size: 22px;
+            font-weight: 900;
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.18);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.25s ease;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+            background: var(--white);
+            transform: translateY(-4px);
+        }
+
+        /* =========================
+           ANIMATIONS
+        ========================= */
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* =========================
+           RESPONSIVE DESIGN
+        ========================= */
+
+        @media (max-width: 1100px) {
+            .header-container {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .nav-links {
+                gap: 18px;
+            }
+
+            .card-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 700px) {
+            .header-container {
+                padding: 13px 4%;
+            }
+
+            .logo {
+                justify-content: center;
+                text-align: left;
+            }
+
+            .sk-logo {
+                width: 55px;
+                height: 55px;
+            }
+
+            .logo-text h1 {
+                font-size: 16px;
+            }
+
+            .tagline {
+                font-size: 11px;
+            }
+
+            .nav-links {
+                gap: 5px 15px;
+            }
+
+            .nav-links a {
+                font-size: 12px;
+                padding: 6px 0;
+            }
+
+            .hero {
+                min-height: 440px;
+                padding: 70px 20px;
+            }
+
+            .hero-label {
+                font-size: 10px;
+                letter-spacing: 1.5px;
+            }
+
+            .hero-description {
+                font-size: 14px;
+            }
+
+            .btn {
+                padding: 12px 17px;
+                font-size: 12px;
+            }
+
+            .intro-section {
+                padding: 0 15px;
+                margin-top: -25px;
+            }
+
+            .intro-box {
+                padding: 22px;
+                gap: 15px;
+            }
+
+            .intro-icon {
+                width: 48px;
+                height: 48px;
+                min-width: 48px;
+                font-size: 23px;
+            }
+
+            .intro-text h3 {
+                font-size: 17px;
+            }
+
+            .intro-text p {
+                font-size: 12px;
+            }
+
+            .section {
+                padding: 55px 18px;
+            }
+
+            .section-heading {
+                margin-bottom: 30px;
+            }
+
+            .card-grid {
+                gap: 15px;
+            }
+
+            .card {
+                padding: 23px 18px;
+            }
+
+            .card p {
+                min-height: auto;
+            }
+
+            .values-section {
+                padding: 50px 18px;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+
+            .value-item {
+                padding: 22px;
+            }
+
+            .quick-access {
+                padding: 50px 18px;
+            }
+
+            .quick-access h2 {
+                font-size: 24px;
+            }
+
+            .quick-buttons {
+                gap: 9px;
+            }
+
+            .quick-btn {
+                padding: 10px 13px;
+                font-size: 12px;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 28px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .back-to-top {
+                right: 15px;
+                bottom: 15px;
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .logo-text h1 {
+                font-size: 14px;
+            }
+
+            .tagline {
+                font-size: 10px;
+            }
+
+            .nav-links {
+                gap: 4px 11px;
+            }
+
+            .nav-links a {
+                font-size: 11px;
+            }
+
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .hero-buttons .btn {
+                width: 100%;
+                max-width: 250px;
+            }
+        }
+
+        /* Respect reduced-motion preferences */
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body id="top">
+
+    <!-- HEADER -->
+
+    <header>
+        <div class="header-container">
+
+            <a href="index.html" class="logo" aria-label="Lihok PANGIÑON Home">
+
+                <img
+                    src="logo.png"
+                    alt="Sangguniang Kabataan Logo"
+                    class="sk-logo"
+                >
+
+                <div class="logo-text">
+                    <h1>SANGGUNIANG KABATAAN</h1>
+
+                    <p class="tagline">
+                        Barangay Pangi, Bontoc, Southern Leyte
+                    </p>
+                </div>
+
+            </a>
+
+            <nav aria-label="Main navigation">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="officials.html">Officials</a></li>
+                    <li><a href="budget.html">Budget</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="documents.html">Documents</a></li>
+                    <li><a href="feedback.html">Feedback</a></li>
+                </ul>
+            </nav>
+
+        </div>
+    </header>
+
+
+    <!-- HERO SECTION -->
+
+    <main>
+
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <span class="hero-label">
+                    Lihok PANGIÑON • Youth Transparency Portal
+                </span>
+
+                <h2>
+                    KABATAANG PANGIÑON,<br>
+                    <span>IPASIGARBO KA!</span>
+                </h2>
+
+                <p class="hero-description">
+                    Empowering the youth through transparency,
+                    accountability, and meaningful community action.
+                    Explore our public funds, projects, official records,
+                    and programs for the youth of Barangay Pangi.
+                </p>
+
+                <div class="hero-buttons">
+
+                    <a href="budget.html" class="btn primary">
+                        &#8369; View Public Budget
+                    </a>
+
+                    <a href="projects.html" class="btn secondary">
+                        Explore Our Projects &rarr;
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- TRANSPARENCY INTRODUCTION -->
+
+        <section class="intro-section">
+
+            <div class="intro-box">
+
+                <div class="intro-text">
+
+                    <h3>Transparency Starts With Access</h3>
+
+                    <p>
+                        This portal provides a central place to access
+                        available SK information, public documents,
+                        budget reports, community projects, and ways
+                        to communicate with your youth representatives.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- MAIN PORTAL SECTIONS -->
+
+        <section class="section" id="portal">
+
+            <div class="section-heading">
+
+                <span class="section-label">
+                    Explore the Portal
+                </span>
+
+                <h2>Everything You Need, In One Place</h2>
+
+                <p>
+                    Stay informed about SK leadership, public funds,
+                    youth programs, and official community records.
+                </p>
+
+            </div>
+
+            <div class="card-grid">
+
+                <!-- OFFICIALS -->
+
+                <article class="card">
+
+                    
+                    <h3>SK Officials</h3>
+
+                    <p>
+                        Meet the Sangguniang Kabataan officials,
+                        discover their responsibilities, and learn
+                        about the people serving our youth community.
+                    </p>
+
+                    <a href="officials.html" class="card-link">
+                        Meet Our Officials <span>&rarr;</span>
+                    </a>
+
+                </article>
+
+
+                <!-- BUDGET -->
+
+                <article class="card">
+
+                   
+
+                    <h3>Public Budget</h3>
+
+                    <p>
+                        Review available annual budget information,
+                        fund allocations, financial reports, and
+                        expenditure records.
+                    </p>
+
+                    <a href="budget.html" class="card-link">
+                        View Budget Reports <span>&rarr;</span>
+                    </a>
+
+                </article>
+
+
+                <!-- PROJECTS -->
+
+                <article class="card">
+
+                   
+
+                    <h3>Community Projects</h3>
+
+                    <p>
+                        Discover youth activities, community programs,
+                        ongoing initiatives, and completed projects
+                        supporting Barangay Pangi.
+                    </p>
+
+                    <a href="projects.html" class="card-link">
+                        Explore Projects <span>&rarr;</span>
+                    </a>
+
+                </article>
+
+
+                <!-- DOCUMENTS -->
+
+                <article class="card">
+
+                    
+                    <h3>Public Documents</h3>
+
+                    <p>
+                        Find available resolutions, meeting minutes,
+                        accomplishment reports, and downloadable
+                        official records.
+                    </p>
+
+                    <a href="documents.html" class="card-link">
+                        Browse Documents <span>&rarr;</span>
+                    </a>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- TRANSPARENCY VALUES -->
+
+        <section class="values-section">
+
+            <div class="values-container">
+
+                <div class="values-heading">
+
+                    <span>Our Commitment</span>
+
+                    <h2>Building Trust Through Transparency</h2>
+
+                    <p>
+                        Responsible youth leadership begins with
+                        openness, participation, and accountability
+                        to the community we serve.
+                    </p>
+
+                </div>
+
+                <div class="values-grid">
+
+                    <article class="value-item">
+
+                        <h3>Transparency</h3>
+
+                        <p>
+                            Promote public access to available
+                            information about SK programs, finances,
+                            and official activities.
+                        </p>
+
+                    </article>
+
+
+                    <article class="value-item">
+
+                        <h3>Accountability</h3>
+
+                        <p>
+                            Encourage responsible public service,
+                            proper documentation, and clear reporting
+                            of community initiatives.
+                        </p>
+
+                    </article>
+
+
+                    <article class="value-item">
+
+                        <h3>Youth Participation</h3>
+
+                        <p>
+                            Give young people opportunities to share
+                            suggestions, raise concerns, and take
+                            part in community development.
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+    <div class="footer-container">
+
+        <div>
+            <h3>LIHOK PANGIÑON</h3>
+
+            <p>
+                Sangguniang Kabataan of Barangay Pangi,
+                Bontoc, Southern Leyte. Promoting transparency,
+                youth participation, and accountable leadership.
+            </p>
+        </div>
+
+    <div class="footer-bottom">
+     <span>KABATAANG PANGIÑON, IPASIGARBO KA!</span>
+    </div>
+</footer>
+
+
+    <!-- BACK TO TOP BUTTON -->
+
+    <a href="#top" class="back-to-top" id="backToTop"
+       aria-label="Back to top">
+        &uarr;
+    </a>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            // Automatically highlight the current navigation page.
+            const navLinks = document.querySelectorAll(".nav-links a");
+
+            let currentPage =
+                window.location.pathname.split("/").pop();
+
+            if (!currentPage) {
+                currentPage = "index.html";
+            }
+
+            navLinks.forEach(function (link) {
+
+                const linkPage = link.getAttribute("href");
+
+                if (linkPage === currentPage) {
+                    link.classList.add("active");
+                    link.setAttribute("aria-current", "page");
+                } else {
+                    link.classList.remove("active");
+                    link.removeAttribute("aria-current");
+                }
+
+            });
+
+
+            // Automatically update the footer year.
+            const yearElement = document.getElementById("currentYear");
+
+            if (yearElement) {
+                yearElement.textContent = new Date().getFullYear();
+            }
+
+
+            // Show the back-to-top button after scrolling.
+            const backToTop = document.getElementById("backToTop");
+
+            function toggleBackToTop() {
+
+                if (window.scrollY > 350) {
+                    backToTop.classList.add("show");
+                } else {
+                    backToTop.classList.remove("show");
+                }
+
+            }
+
+            window.addEventListener("scroll", toggleBackToTop);
+
+            toggleBackToTop();
+
+        });
+    </script>
+
+</body>
+</html>

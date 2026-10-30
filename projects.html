@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lihok PANGIÑON</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <div class="header-container">
+        <a href="index.html" class="logo">
+            <img src="logo.png" alt="SK Logo" class="sk-logo">
+            <div class="logo-text">
+                <h1>SANGGUNIANG KABATAAN</h1>
+                <p class="tagline">Barangay Pangi, Bontoc, Southern Leyte</p>
+            </div>
+        </a>
+
+        <nav aria-label="Main navigation">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="officials.html">Officials</a></li>
+                <li><a href="budget.html">Budget</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="documents.html">Documents</a></li>
+                <li><a href="feedback.html">Feedback</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <section class="page-hero">
+        <span class="eyebrow">Community Development</span>
+        <h2>SK Projects and Programs</h2>
+        <p>
+            Explore youth initiatives, project allocations, and progress
+            updates for community development in Barangay Pangi.
+        </p>
+    </section>
+
+    <section class="section">
+        <div class="container">
+
+            <div class="section-heading">
+                <span>Project Overview</span>
+                <h2>Our Community Initiatives</h2>
+                <p>
+                    Search the project list or filter by project status
+                    to find information more easily.
+                </p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3 id="totalProjects">4</h3>
+                    <p>Example Projects</p>
+                </div>
+
+                <div class="stat-card">
+                    <h3>₱870,000</h3>
+                    <p>Illustrative Combined Budget</p>
+                </div>
+
+                <div class="stat-card">
+                    <h3>1</h3>
+                    <p>Example Completed Projects</p>
+                </div>
+
+                <div class="stat-card">
+                    <h3>2</h3>
+                    <p>Example Ongoing Projects</p>
+                </div>
+            </div>
+
+            <div class="toolbar">
+                <input
+                    type="search"
+                    id="projectSearch"
+                    placeholder="Search projects..."
+                    aria-label="Search projects"
+                >
+
+                <select id="statusFilter" aria-label="Filter by status">
+                    <option value="all">All Project Statuses</option>
+                    <option value="ongoing">Ongoing</option>
+                    <option value="completed">Completed</option>
+                    <option value="upcoming">Upcoming</option>
+                </select>
+            </div>
+
+            <div class="grid" id="projectGrid">
+
+                <article class="card project-card"
+                         data-name="Barangay Street Lighting Upgrade"
+                         data-status="ongoing">
+
+                    <span class="badge badge-yellow">Ongoing</span>
+
+                    <h3 style="margin-top:12px;">
+                        Barangay Street Lighting Upgrade
+                    </h3>
+
+                    <p><strong>Sample Budget:</strong> ₱250,000.00</p>
+                    <p><strong>Example Progress:</strong> 65%</p>
+
+                    <div class="progress" aria-label="65 percent complete">
+                        <div class="progress-bar" style="width:65%;"></div>
+                    </div>
+
+                    <p>
+                        Example initiative for improving community lighting
+                        and visibility along selected streets.
+                    </p>
+
+                    <p><strong>Sample Update:</strong> October 20, 2026</p>
+                </article>
+
+
+                <article class="card project-card"
+                         data-name="Clean and Green Community Program"
+                         data-status="ongoing">
+
+                    <span class="badge badge-yellow">Ongoing</span>
+
+                    <h3 style="margin-top:12px;">
+                        Clean &amp; Green Community Program
+                    </h3>
+
+                    <p><strong>Sample Budget:</strong> ₱80,000.00</p>
+                    <p><strong>Example Progress:</strong> 45%</p>
+
+                    <div class="progress" aria-label="45 percent complete">
+                        <div class="progress-bar" style="width:45%;"></div>
+                    </div>
+
+                    <p>
+                        Example environmental initiative involving
+                        community cleanups and environmental awareness.
+                    </p>
+
+                    <p><strong>Sample Activity:</strong> November 6, 2026</p>
+                </article>
+
+
+                <article class="card project-card"
+                         data-name="Barangay Health Center Renovation"
+                         data-status="completed">
+
+                    <span class="badge badge-green">Completed</span>
+
+                    <h3 style="margin-top:12px;">
+                        Barangay Health Center Renovation
+                    </h3>
+
+                    <p><strong>Sample Budget:</strong> ₱420,000.00</p>
+                    <p><strong>Example Progress:</strong> 100%</p>
+
+                    <div class="progress" aria-label="100 percent complete">
+                        <div class="progress-bar" style="width:100%;"></div>
+                    </div>
+
+                    <p>
+                        Example facility improvement initiative intended
+                        to support community health services.
+                    </p>
+
+                    <p><strong>Sample Completion:</strong> September 30, 2026</p>
+                </article>
+
+
+                <article class="card project-card"
+                         data-name="SK Sports Development League"
+                         data-status="upcoming">
+
+                    <span class="badge badge-blue">Upcoming</span>
+
+                    <h3 style="margin-top:12px;">
+                        SK Sports Development League
+                    </h3>
+
+                    <p><strong>Sample Budget:</strong> ₱120,000.00</p>
+                    <p><strong>Example Progress:</strong> 0%</p>
+
+                    <div class="progress" aria-label="0 percent complete">
+                        <div class="progress-bar" style="width:0%;"></div>
+                    </div>
+
+                    <p>
+                        Example sports program designed to encourage
+                        teamwork, participation, and active lifestyles.
+                    </p>
+
+                    <p><strong>Sample Schedule:</strong> Fourth Quarter 2026</p>
+                </article>
+
+            </div>
+
+            <p id="noProjects" hidden
+               style="text-align:center; padding:30px; color:#63766a;">
+                No projects match your search.
+            </p>
+
+            <div style="text-align:center; margin-top:35px;">
+                <a href="budget.html" class="btn btn-green">
+                    View Budget Information →
+                </a>
+
+                <a href="documents.html" class="btn btn-outline">
+                    View Project Documents
+                </a>
+            </div>
+
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="footer-container">
+
+        <div>
+            <h3>LIHOK PANGIÑON</h3>
+
+            <p>
+                Sangguniang Kabataan of Barangay Pangi,
+                Bontoc, Southern Leyte. Promoting transparency,
+                youth participation, and accountable leadership.
+            </p>
+        </div>
+
+    <div class="footer-bottom">
+     <span>KABATAANG PANGIÑON, IPASIGARBO KA!</span>
+    </div>
+</footer>
+
+<script>
+    const currentPage = location.pathname.split("/").pop() || "index.html";
+
+    document.querySelectorAll(".nav-links a").forEach(link => {
+        if (link.getAttribute("href") === currentPage) {
+            link.classList.add("active");
+            link.setAttribute("aria-current", "page");
+        }
+    });
+
+    document.querySelectorAll(".year").forEach(el => {
+        el.textContent = new Date().getFullYear();
+    });
+
+    const searchInput = document.getElementById("projectSearch");
+    const statusFilter = document.getElementById("statusFilter");
+    const projectCards = document.querySelectorAll(".project-card");
+    const noProjects = document.getElementById("noProjects");
+
+    function filterProjects() {
+        const searchTerm = searchInput.value.toLowerCase().trim();
+        const selectedStatus = statusFilter.value;
+        let visibleCount = 0;
+
+        projectCards.forEach(card => {
+            const name = card.dataset.name.toLowerCase();
+            const status = card.dataset.status;
+
+            const matchesSearch = name.includes(searchTerm);
+            const matchesStatus =
+                selectedStatus === "all" || status === selectedStatus;
+
+            const visible = matchesSearch && matchesStatus;
+
+            card.hidden = !visible;
+
+            if (visible) visibleCount++;
+        });
+
+        noProjects.hidden = visibleCount !== 0;
+    }
+
+    searchInput.addEventListener("input", filterProjects);
+    statusFilter.addEventListener("change", filterProjects);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SK Officials | Lihok PANGIÑON</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .org-chart-section {
+            padding: 50px 20px 70px;
+            background: #f5f8f6;
+        }
+
+        .org-chart {
+            max-width: 1150px;
+            margin: 40px auto 0;
+            text-align: center;
+        }
+
+        .org-level {
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            flex-wrap: wrap;
+            gap: 24px;
+            position: relative;
+        }
+
+        .org-card {
+            width: 250px;
+            min-height: 230px;
+            background: #ffffff;
+            border: 1px solid #dce8e1;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 6px 18px rgba(2, 41, 31, 0.08);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            position: relative;
+        }
+
+        .org-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 25px rgba(2, 41, 31, 0.15);
+        }
+
+        .org-card-header {
+            height: 8px;
+            background: #064735;
+        }
+
+        .org-card.chairperson {
+            width: 310px;
+            border: 2px solid #d4a72c;
+        }
+
+        .chairperson .org-card-header {
+            background: linear-gradient(90deg, #b8860b, #facc15, #b8860b);
+        }
+
+        .org-card-body {
+            padding: 22px 18px 24px;
+        }
+
+        /* DEFAULT CIRCULAR ICONS */
+        .org-icon {
+            width: 68px;
+            height: 68px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 15px;
+            border-radius: 50%;
+            background: #e5f1e9;
+            border: 2px solid #c5dfcf;
+            font-size: 30px;
+            box-sizing: border-box;
+        }
+
+        /* SK CHAIRPERSON PHOTO CIRCLE */
+        .chairperson-photo {
+            width: 130px;
+            height: 130px;
+            margin: 0 auto 18px;
+            padding: 0;
+            overflow: hidden;
+            border-radius: 50%;
+            border: 5px solid #d4a72c;
+            background: #fff6d6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(2, 41, 31, 0.15);
+            box-sizing: border-box;
+        }
+
+        .chairperson-photo img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 50%;
+        }
+
+        .chairperson .org-icon {
+            background: #fff6d6;
+            border-color: #e9cb65;
+        }
+        .members-photo {
+    width: 130px;
+    height: 130px;
+    margin: 0 auto 18px;
+    padding: 0;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 5px solid #d4a72c;
+    background: #fff6d6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 15px rgba(2, 41, 31, 0.15);
+    box-sizing: border-box;
+}
+
+.members-photo img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+}
+/* APPOINTED PERSONNEL */
+.appointed-container {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin: 30px auto;
+}
+
+.appointed-card {
+    width: 280px;
+    text-align: center;
+    padding: 25px 20px;
+    border-radius: 18px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 6px 18px rgba(2, 41, 31, 0.10);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.appointed-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 25px rgba(2, 41, 31, 0.16);
+}
+
+.appointed-photo {
+    width: 130px;
+    height: 130px;
+    margin: 0 auto 18px;
+    padding: 0;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 5px solid #d4a72c;
+    background: #fff6d6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    box-shadow: 0 5px 15px rgba(2, 41, 31, 0.15);
+}
+
+.appointed-photo img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+}
+
+.appointed-card h3 {
+    color: #064735;
+    font-size: 17px;
+    margin: 10px 0;
+    font-weight: 800;
+}
+
+.appointed-card .official-name {
+    color: #333333;
+    font-size: 14px;
+    font-weight: 600;
+    margin: 8px 0 12px;
+}
+
+.position-badge {
+    display: inline-block;
+    padding: 7px 13px;
+    border-radius: 20px;
+    background: #e9f5ee;
+    color: #064735;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+@media (max-width: 600px) {
+    .appointed-container {
+        gap: 20px;
+    }
+
+    .appointed-card {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+        .org-position {
+            color: #16845b;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 11px;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .chairperson .org-position {
+            color: #946b00;
+        }
+
+        .org-card h3 {
+            color: #02291f;
+            font-size: 18px;
+            line-height: 1.4;
+            margin: 0 0 10px;
+        }
+
+        .org-name {
+            display: inline-block;
+            color: #52645b;
+            font-size: 13px;
+            line-height: 1.6;
+            background: #f3f7f4;
+            border-radius: 8px;
+            padding: 7px 10px;
+            margin-bottom: 13px;
+        }
+
+        .chairperson .org-name {
+            background: #fff8e3;
+        }
+
+        .org-description {
+            color: #65736b;
+            font-size: 13px;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        .org-connector {
+            width: 3px;
+            height: 45px;
+            background: #16845b;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .org-connector::after {
+            content: "";
+            position: absolute;
+            bottom: -1px;
+            left: -5px;
+            width: 10px;
+            height: 10px;
+            border-right: 3px solid #16845b;
+            border-bottom: 3px solid #16845b;
+            transform: rotate(45deg);
+        }
+
+        .org-level-title {
+            display: inline-block;
+            background: #064735;
+            color: #ffffff;
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 12px rgba(2, 41, 31, 0.12);
+        }
+
+        .org-level-title span {
+            color: #facc15;
+        }
+
+        .org-divider {
+            width: 80%;
+            max-width: 850px;
+            height: 2px;
+            background: #c8ded0;
+            margin: 0 auto 30px;
+            position: relative;
+        }
+
+        .org-divider::before,
+        .org-divider::after {
+            content: "";
+            position: absolute;
+            top: -5px;
+            width: 12px;
+            height: 12px;
+            background: #16845b;
+            border-radius: 50%;
+        }
+
+        .org-divider::before {
+            left: 0;
+        }
+
+        .org-divider::after {
+            right: 0;
+        }
+
+        .appointed-section {
+            margin-top: 55px;
+        }
+
+        .appointed-card {
+            width: 280px;
+            min-height: 205px;
+        }
+
+        .appointed-card .org-card-header {
+            background: #16845b;
+        }
+
+        /* COMMITTEE SECTION */
+        .committee-section {
+            margin-top: 60px;
+            padding: 30px;
+            background: #ffffff;
+            border: 1px solid #dce8e1;
+            border-radius: 18px;
+            box-shadow: 0 6px 20px rgba(2, 41, 31, 0.05);
+        }
+
+        .committee-heading {
+            margin-bottom: 25px;
+        }
+
+        .committee-heading span {
+            display: block;
+            color: #16845b;
+            font-size: 12px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 8px;
+        }
+
+        .committee-heading h3 {
+            color: #02291f;
+            font-size: 25px;
+            margin: 0 0 10px;
+        }
+
+        .committee-heading p {
+            color: #65736b;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .committee-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .committee-card {
+            background: #f5f8f6;
+            border: 1px solid #dce8e1;
+            border-left: 5px solid #16845b;
+            border-radius: 12px;
+            padding: 22px 18px;
+            text-align: left;
+            transition: 0.25s ease;
+        }
+
+        .committee-card:hover {
+            background: #edf6ef;
+            transform: translateY(-3px);
+        }
+
+        .committee-card .committee-icon {
+            font-size: 25px;
+            margin-bottom: 12px;
+        }
+
+        .committee-card h4 {
+            color: #064735;
+            font-size: 15px;
+            line-height: 1.5;
+            margin: 0 0 10px;
+        }
+
+        .committee-card p {
+            color: #65736b;
+            font-size: 13px;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        /* TRANSPARENCY NOTICE */
+        .org-notice {
+            max-width: 900px;
+            margin: 35px auto 0;
+            padding: 17px 20px;
+            border-left: 5px solid #d4a72c;
+            border-radius: 8px;
+            background: #fff8df;
+            color: #624d13;
+            text-align: left;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        .org-notice strong {
+            color: #493700;
+        }
+
+        .org-action {
+            margin-top: 35px;
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 900px) {
+            .committee-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .org-level {
+                gap: 18px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .org-chart-section {
+                padding: 35px 14px 50px;
+            }
+
+            .org-card,
+            .org-card.chairperson,
+            .appointed-card {
+                width: 100%;
+                max-width: 340px;
+            }
+
+            .org-level {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .org-divider {
+                width: 70%;
+            }
+
+            .committee-section {
+                padding: 22px 15px;
+            }
+
+            .committee-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .committee-heading h3 {
+                font-size: 22px;
+            }
+
+            .org-level-title {
+                font-size: 12px;
+                padding: 10px 18px;
+            }
+        }
+
+        /* PRINT */
+        @media print {
+            header,
+            footer,
+            .org-action {
+                display: none !important;
+            }
+
+            .org-chart-section {
+                background: #ffffff;
+            }
+
+            .org-card,
+            .committee-card {
+                break-inside: avoid;
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+    <div class="header-container">
+
+        <a href="index.html" class="logo">
+            <img src="logo.png" alt="SK Logo" class="sk-logo">
+
+            <div class="logo-text">
+                <h1>SANGGUNIANG KABATAAN</h1>
+                <p class="tagline">
+                    Barangay Pangi, Bontoc, Southern Leyte
+                </p>
+            </div>
+        </a>
+
+        <nav aria-label="Main navigation">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="officials.html">Officials</a></li>
+                <li><a href="budget.html">Budget</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="documents.html">Documents</a></li>
+                <li><a href="feedback.html">Feedback</a></li>
+            </ul>
+        </nav>
+
+    </div>
+</header>
+
+<!-- MAIN CONTENT -->
+<main>
+
+    <section class="page-hero">
+        <span class="eyebrow">Our Youth Leadership</span>
+
+        <h2>Meet Our SK Officials</h2>
+
+        <p>
+            Get to know the leaders and appointed personnel who work together
+            to represent the youth and support community development
+            in Barangay Pangi.
+        </p>
+    </section>
+
+    <!-- ORGANIZATIONAL CHART -->
+    <section class="org-chart-section">
+
+        <div class="container">
+
+            <div class="section-heading">
+                <h2>SK Organizational Chart</h2>
+
+                <p>
+                    An overview of the Sangguniang Kabataan leadership,
+                    council members, appointed personnel, and committee
+                    responsibilities.
+                </p>
+            </div>
+
+            <div class="org-chart">
+
+             
+                <div class="org-level-title">
+                    <span></span> &nbsp; EXECUTIVE LEADERSHIP
+                </div>
+
+                <div class="org-level">
+
+                    <article class="org-card chairperson">
+
+                        <div class="org-card-header"></div>
+
+                        <div class="org-card-body">
+
+                            <div class="org-icon chairperson-photo">
+                                <img
+                                    src="ariel.png"
+                                    alt="SK Chairperson"
+                                >
+                            </div>
+
+                            <div class="org-position">
+                                SK Chairperson
+                            </div>
+
+                            <h3>HON.JOHN ARIEL M. JAMORA</h3>
+
+                            <p class="org-description">
+                                Leads the SK council, coordinates youth
+                                initiatives, and oversees approved youth
+                                programs and activities.
+                            </p>
+
+                        </div>
+                    </article>
+
+                </div>
+
+<div class="org-level-title">
+    <span></span> &nbsp; SK COUNCIL MEMBERS
+</div>
+
+<div class="org-divider"></div>
+
+<div class="org-level">
+
+  
+    <article class="org-card">
+        <div class="org-card-header"></div>
+
+        <div class="org-card-body">
+
+            <div class="org-icon members-photo">
+                <img src="angel.jpg" alt="Angel S. Aguylo">
+            </div>
+
+            <div class="org-position">SK Member</div>
+
+            <h4>HON. ANGEL S. AGUYLO</h4>
+
+            <p class="org-description">
+                Participates in council deliberations and supports
+                the implementation of youth programs.
+            </p>
+
+        </div>
+    </article>
+
+    <!-- SK MEMBER 2 -->
+    <article class="org-card">
+        <div class="org-card-header"></div>
+
+        <div class="org-card-body">
+
+            <div class="org-icon members-photo">
+                <img src="aning.jpg" alt="Anilyn D. Geneston">
+            </div>
+
+            <div class="org-position">SK Member</div>
+
+            <h4>HON. ANILYN D. GENESTON</h4>
+
+            <p class="org-description">
+                Supports educational initiatives, youth development,
+                and community participation.
+            </p>
+
+        </div>
+    </article>
+
+    <!-- SK MEMBER 3 -->
+    <article class="org-card">
+        <div class="org-card-header"></div>
+
+        <div class="org-card-body">
+
+            <div class="org-icon members-photo">
+                <img src="maricon.jpg" alt="Maricon A. Dairo">
+            </div>
+
+            <div class="org-position">SK Member</div>
+
+            <h4>HON. MARICON A. DAIRO</h4>
+
+            <p class="org-description">
+                Supports environmental awareness, volunteer activities,
+                and community improvement.
+            </p>
+
+        </div>
+    </article>
+
+    <!-- SK MEMBER 4 -->
+    <article class="org-card">
+        <div class="org-card-header"></div>
+
+        <div class="org-card-body">
+
+            <div class="org-icon members-photo">
+                <img src="lester.jpg" alt="Carl Lestre B. Capusoran">
+            </div>
+
+            <div class="org-position">SK Member</div>
+
+            <h4>HON. CARL LESTRE B. CAPUSORAN</h4>
+
+            <p class="org-description">
+                Helps promote sports, recreation, teamwork,
+                and healthy youth activities.
+            </p>
+
+        </div>
+    </article>
+
+    <!-- SK MEMBER 5 -->
+    <article class="org-card">
+        <div class="org-card-header"></div>
+
+        <div class="org-card-body">
+
+            <div class="org-icon members-photo" aria-hidden="true">
+                
+            </div>
+
+            <div class="org-position">SK Member</div>
+
+            <h3>SK Kagawad 5</h3>
+
+            <div class="org-name">Official name to be added</div>
+
+            <p class="org-description">
+                Supports cultural activities, creative programs,
+                and youth engagement.
+            </p>
+
+        </div>
+    </article>
+
+    <!-- SK MEMBER 6 -->
+    <article class="org-card">
+        <div class="org-card-header"></div>
+
+        <div class="org-card-body">
+
+            <div class="org-icon members-photo" aria-hidden="true">
+                
+            </div>
+
+            <div class="org-position">SK Member</div>
+
+            <h3>SK Kagawad 6</h3>
+
+            <div class="org-name">Official name to be added</div>
+
+            <p class="org-description">
+                Participates in council decisions and helps develop
+                programs responsive to youth needs.
+            </p>
+
+        </div>
+    </article>
+
+    <!-- SK MEMBER 7 -->
+    <article class="org-card">
+        <div class="org-card-header"></div>
+
+        <div class="org-card-body">
+
+            <div class="org-icon members-photo" aria-hidden="true">
+                
+            </div>
+
+            <div class="org-position">SK Member</div>
+
+            <h3>SK Kagawad 7</h3>
+
+            <div class="org-name">Official name to be added</div>
+
+            <p class="org-description">
+                Supports youth participation and community projects
+                through council activities.
+            </p>
+
+        </div>
+    </article>
+
+</div>
+<!-- APPOINTED PERSONNEL -->
+<section class="org-section appointed-section">
+    <h2 class="section-title">Appointed Personnel</h2>
+    <p class="section-description">
+        Dedicated personnel supporting the SK Council in administrative
+        and financial responsibilities.
+    </p>
+
+    <div class="appointed-container">
+
+        <!-- SK SECRETARY -->
+        <div class="org-card appointed-card">
+            <div class="org-card-body">
+                <div class="org-icon appointed-photo">
+                    <img src="secretary.jpg" alt="SK Secretary">
+                </div>
+
+                <h3>SK SECRETARY</h3>
+                <p class="official-name">NAME OF SK SECRETARY</p>
+                <span class="position-badge">Appointed Personnel</span>
+            </div>
+        </div>
+
+        <!-- SK TREASURER -->
+        <div class="org-card appointed-card">
+            <div class="org-card-body">
+                <div class="org-icon appointed-photo">
+                    <img src="treasurer.jpg" alt="SK Treasurer">
+                </div>
+
+                <h3>SK TREASURER</h3>
+                <p class="official-name">NAME OF SK TREASURER</p>
+                <span class="position-badge">Appointed Personnel</span>
+            </div>
+        </div>
+
+    </div>
+</section>
+                
+                <!-- COMMITTEES -->
+                <section class="committee-section">
+
+                    <div class="committee-heading">
+                        <span>Working Together</span>
+
+                        <h3>SK Committees and Responsibilities</h3>
+
+                        <p>
+                            Committees support specific areas of youth
+                            development and community service. Update the
+                            assignments below using verified SK records.
+                        </p>
+                    </div>
+
+                    <div class="committee-grid">
+
+                        <article class="committee-card">
+                            
+
+                            <h4>Committee on Education</h4>
+
+                            <p>
+                                Supports educational assistance, learning
+                                activities, and programs for young people.
+                            </p>
+                        </article>
+
+                        <article class="committee-card">
+                            
+
+                            <h4>Committee on Sports and Recreation</h4>
+
+                            <p>
+                                Supports sports events, recreation, teamwork,
+                                and healthy youth engagement.
+                            </p>
+                        </article>
+
+                        <article class="committee-card">
+                            
+
+                            <h4>Committee on Environment</h4>
+
+                            <p>
+                                Promotes environmental awareness, clean-up
+                                activities, and community responsibility.
+                            </p>
+                        </article>
+
+                        <article class="committee-card">
+                            
+
+                            <h4>Committee on Livelihood</h4>
+
+                            <p>
+                                Encourages skills development, entrepreneurship,
+                                and youth livelihood opportunities.
+                            </p>
+                        </article>
+
+                        <article class="committee-card">
+
+                            <h4>Committee on Health</h4>
+
+                            <p>
+                                Supports health awareness, wellness activities,
+                                and youth-focused community initiatives.
+                            </p>
+                        </article>
+
+                        <article class="committee-card">
+                            
+
+                            <h4>Committee on Budget and Finance</h4>
+
+                            <p>
+                                Supports responsible budget planning,
+                                documentation, and financial transparency.
+                            </p>
+                        </article>
+
+                    </div>
+                </section>
+
+
+                <!-- ACTION BUTTONS -->
+                <div class="org-action">
+
+                    <a href="projects.html" class="btn btn-green">
+                        View Community Projects →
+                    </a>
+
+                    <a href="budget.html" class="btn btn-outline">
+                        View SK Budget
+                    </a>
+
+                    <button
+                        type="button"
+                        class="btn btn-outline"
+                        onclick="window.print()"
+                    >
+                        Print Organizational Chart
+                    </button>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-container">
+
+        <div>
+            <h3>LIHOK PANGIÑON</h3>
+
+            <p>
+                Sangguniang Kabataan of Barangay Pangi,
+                Bontoc, Southern Leyte. Promoting transparency,
+                youth participation, and accountable leadership.
+            </p>
+        </div>
+
+    <div class="footer-bottom">
+     <span>KABATAANG PANGIÑON, IPASIGARBO KA!</span>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>

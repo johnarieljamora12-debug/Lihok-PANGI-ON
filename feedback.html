@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback | Lihok PANGIÑON</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <div class="header-container">
+        <a href="index.html" class="logo">
+            <img src="logo.png" alt="SK Logo" class="sk-logo">
+
+            <div class="logo-text">
+                <h1>SANGGUNIANG KABATAAN</h1>
+                <p class="tagline">Barangay Pangi, Bontoc, Southern Leyte</p>
+            </div>
+        </a>
+
+        <nav aria-label="Main navigation">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="officials.html">Officials</a></li>
+                <li><a href="budget.html">Budget</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="documents.html">Documents</a></li>
+                <li><a href="feedback.html">Feedback</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main>
+
+    <section class="page-hero">
+        <span class="eyebrow">Your Voice Matters</span>
+        <h2>Feedback and Suggestions</h2>
+        <p>
+            Share your ideas, concerns, and suggestions to help improve
+            youth programs and community services in Barangay Pangi.
+        </p>
+    </section>
+
+    <section class="section">
+        <div class="container">
+
+            <div class="section-heading">
+                <span>Community Participation</span>
+                <h2>We Want to Hear From You</h2>
+                <p>
+                    Your feedback can help identify community needs,
+                    improve services, and strengthen youth participation.
+                </p>
+            </div>
+
+            <div class="grid" style="margin-bottom:30px;">
+
+                <article class="card">
+                   
+                    <h3>Suggestions</h3>
+                    <p>
+                        Share ideas for new youth programs, educational
+                        activities, sports events, and community projects.
+                    </p>
+                </article>
+
+                <article class="card">
+                   
+                    <h3>Concerns</h3>
+                    <p>
+                        Raise concerns about community initiatives,
+                        services, or information published on this portal.
+                    </p>
+                </article>
+
+                <article class="card">
+                   
+                    <h3>Participation</h3>
+                    <p>
+                        Help build a community where young people can
+                        participate in planning and decision-making.
+                    </p>
+                </article>
+
+            </div>
+
+            <div class="form-card">
+
+                <div class="section-heading" style="margin-bottom:25px;">
+                    <span>Feedback Form</span>
+                    <h2>Send Us Your Message</h2>
+                    <p>
+                        Complete the fields below to prepare your feedback.
+                    </p>
+                </div>
+
+                <form id="feedbackForm">
+
+                    <div class="form-group">
+                        <label for="fullName">Full Name</label>
+                        <input
+                            type="text"
+                            id="fullName"
+                            name="fullName"
+                            placeholder="Enter your name"
+                            autocomplete="name"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="Enter your email address"
+                            autocomplete="email"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="category">Feedback Category</label>
+
+                        <select id="category" name="category" required>
+                            <option value="">Select a category</option>
+                            <option value="suggestion">Suggestion</option>
+                            <option value="concern">Community Concern</option>
+                            <option value="budget">Budget Transparency</option>
+                            <option value="project">Project Inquiry</option>
+                            <option value="document">Document Inquiry</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input
+                            type="text"
+                            id="subject"
+                            name="subject"
+                            placeholder="Enter the subject of your message"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+
+                        <textarea
+                            id="message"
+                            name="message"
+                            placeholder="Write your feedback or suggestion here..."
+                            minlength="10"
+                            required
+                        ></textarea>
+                    </div>
+
+                    <div class="notice">
+                        <strong>Privacy reminder:</strong>
+                        Avoid including passwords, financial account details,
+                        or other sensitive personal information in your message.
+                    </div>
+
+                    <button type="submit" class="btn btn-green">
+                        Prepare Feedback
+                    </button>
+
+                    <button type="reset" class="btn btn-outline">
+                        Clear Form
+                    </button>
+
+                    <p class="form-note">
+                        Demonstration only: this form does not transmit
+                        or store your information. A backend or connected
+                        submission service is needed to deliver messages.
+                    </p>
+
+                    <div id="formMessage"
+                         class="notice"
+                         role="status"
+                         aria-live="polite"
+                         hidden
+                         style="margin-top:20px;">
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <div class="footer-container">
+
+        <div>
+            <h3>LIHOK PANGIÑON</h3>
+
+            <p>
+                Sangguniang Kabataan of Barangay Pangi,
+                Bontoc, Southern Leyte. Promoting transparency,
+                youth participation, and accountable leadership.
+            </p>
+        </div>
+
+    <div class="footer-bottom">
+     <span>KABATAANG PANGIÑON, IPASIGARBO KA!</span>
+    </div>
+</footer>
+
+<script>
+    
+    const currentPage = location.pathname.split("/").pop() || "index.html";
+
+    document.querySelectorAll(".nav-links a").forEach(link => {
+        if (link.getAttribute("href") === currentPage) {
+            link.classList.add("active");
+            link.setAttribute("aria-current", "page");
+        }
+    });
+
+   
+    document.querySelectorAll(".year").forEach(el => {
+        el.textContent = new Date().getFullYear();
+    });
+
+    const feedbackForm = document.getElementById("feedbackForm");
+    const formMessage = document.getElementById("formMessage");
+
+    feedbackForm.addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        if (!feedbackForm.checkValidity()) {
+            feedbackForm.reportValidity();
+            return;
+        }
+
+        formMessage.hidden = false;
+        formMessage.textContent =
+            "Your form is valid, but no message was sent or saved. " +
+            "Connect a backend or submission service to receive feedback.";
+
+        formMessage.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
+    });
+
+    feedbackForm.addEventListener("reset", function() {
+        formMessage.hidden = true;
+        formMessage.textContent = "";
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lihok PANGIÑON</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <div class="header-container">
+        <a href="index.html" class="logo">
+            <img src="logo.png" alt="SK Logo" class="sk-logo">
+            <div class="logo-text">
+                <h1>SANGGUNIANG KABATAAN</h1>
+                <p class="tagline">Barangay Pangi, Bontoc, Southern Leyte</p>
+            </div>
+        </a>
+
+        <nav aria-label="Main navigation">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="officials.html">Officials</a></li>
+                <li><a href="budget.html">Budget</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="documents.html">Documents</a></li>
+                <li><a href="feedback.html">Feedback</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <section class="page-hero">
+        <span class="eyebrow">Public Records and Reports</span>
+        <h2>Documents and Downloads</h2>
+        <p>
+            Find available SK resolutions, financial records,
+            meeting minutes, accomplishment reports, and other
+            public documents.
+        </p>
+    </section>
+
+    <section class="section">
+        <div class="container">
+
+            <div class="notice">
+                <strong>Document availability:</strong>
+                Only publish authentic documents approved for public release.
+                Replace example filenames with the exact names of your PDF files.
+            </div>
+
+            <div class="section-heading">
+                <span>Document Directory</span>
+                <h2>Browse Public Documents</h2>
+                <p>
+                    Search by document name or select a category
+                    to narrow the list.
+                </p>
+            </div>
+
+            <div class="toolbar">
+                <input
+                    type="search"
+                    id="documentSearch"
+                    placeholder="Search documents..."
+                    aria-label="Search documents"
+                >
+
+                <select id="documentCategory" aria-label="Filter documents by category">
+                    <option value="all">All Categories</option>
+                    <option value="budget">Budget and Finance</option>
+                    <option value="resolution">Resolutions</option>
+                    <option value="report">Reports</option>
+                </select>
+            </div>
+
+            <div class="document-list" id="documentList">
+
+                <article class="document-item"
+                         data-name="Annual SK Budget"
+                         data-category="budget">
+
+                    <div class="document-info">
+                        <h3>Annual SK Budget</h3>
+                        <p>Category: Budget and Finance</p>
+                        <p>Format: PDF · Replace with the approved budget file</p>
+                    </div>
+
+                    <a href="files/annual-sk-budget.pdf"
+                       class="btn btn-green"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        View PDF
+                    </a>
+                </article>
+
+
+                <article class="document-item"
+                         data-name="Financial Statement"
+                         data-category="budget">
+
+                    <div class="document-info">
+                        <h3>Financial Statement</h3>
+                        <p>Category: Budget and Finance</p>
+                        <p>Format: PDF · Replace with the actual financial statement</p>
+                    </div>
+
+                    <a href="files/financial-statement.pdf"
+                       class="btn btn-green"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        View PDF
+                    </a>
+                </article>
+
+
+                <article class="document-item"
+                         data-name="SK Council Resolution"
+                         data-category="resolution">
+
+                    <div class="document-info">
+                        <h3>SK Council Resolution</h3>
+                        <p>Category: Resolutions</p>
+                        <p>Format: PDF · Replace with an approved resolution</p>
+                    </div>
+
+                    <a href="files/sk-resolution.pdf"
+                       class="btn btn-green"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        View PDF
+                    </a>
+                </article>
+
+                <article class="document-item"
+                         data-name="Project Accomplishment Report"
+                         data-category="report">
+
+                    <div class="document-info">
+                        <h3>Project Accomplishment Report</h3>
+                        <p>Category: Reports</p>
+                        <p>Format: PDF · Replace with the verified report</p>
+                    </div>
+
+                    <a href="files/project-accomplishment-report.pdf"
+                       class="btn btn-green"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        View PDF
+                    </a>
+                </article>
+
+            </div>
+
+            <p id="noDocuments" hidden
+               style="text-align:center; padding:30px; color:#63766a;">
+                No documents match your search.
+            </p>
+
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="footer-container">
+
+        <div>
+            <h3>LIHOK PANGIÑON</h3>
+
+            <p>
+                Sangguniang Kabataan of Barangay Pangi,
+                Bontoc, Southern Leyte. Promoting transparency,
+                youth participation, and accountable leadership.
+            </p>
+        </div>
+
+    <div class="footer-bottom">
+     <span>KABATAANG PANGIÑON, IPASIGARBO KA!</span>
+    </div>
+</footer>
+
+<script>
+    const currentPage = location.pathname.split("/").pop() || "index.html";
+
+    document.querySelectorAll(".nav-links a").forEach(link => {
+        if (link.getAttribute("href") === currentPage) {
+            link.classList.add("active");
+            link.setAttribute("aria-current", "page");
+        }
+    });
+
+    document.querySelectorAll(".year").forEach(el => {
+        el.textContent = new Date().getFullYear();
+    });
+
+    const searchInput = document.getElementById("documentSearch");
+    const categorySelect = document.getElementById("documentCategory");
+    const documents = document.querySelectorAll(".document-item");
+    const noDocuments = document.getElementById("noDocuments");
+
+    function filterDocuments() {
+        const searchTerm = searchInput.value.toLowerCase().trim();
+        const selectedCategory = categorySelect.value;
+        let visibleCount = 0;
+
+        documents.forEach(documentCard => {
+            const name = documentCard.dataset.name.toLowerCase();
+            const category = documentCard.dataset.category;
+
+            const matchesSearch = name.includes(searchTerm);
+            const matchesCategory =
+                selectedCategory === "all" ||
+                category === selectedCategory;
+
+            const visible = matchesSearch && matchesCategory;
+
+            documentCard.hidden = !visible;
+
+            if (visible) visibleCount++;
+        });
+
+        noDocuments.hidden = visibleCount !== 0;
+    }
+
+    searchInput.addEventListener("input", filterDocuments);
+    categorySelect.addEventListener("change", filterDocuments);
+</script>
+
+</body>
+</html>
